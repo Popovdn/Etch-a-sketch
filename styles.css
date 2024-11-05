@@ -9,13 +9,14 @@
   box-sizing: border-box;
 }
 
-.container {
+.grid-container {
   display: flex;
   justify-content: center;
 }
 
 .grid-item {
   border: 1px solid black;
+  border-radius: 5px;
 }
 
 .hover {
