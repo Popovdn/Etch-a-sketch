@@ -13,16 +13,11 @@
 
 .grid-container {
   display: flex;
-  justify-content: center;
 }
 
 .grid-item {
   border: 1px solid black;
   border-radius: 5px;
-}
-
-.hover {
-  background-color: #D61355;
 }
 
 .grid-wrapper {
@@ -33,7 +28,9 @@
 
 .controls {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
 }
 
 button {
@@ -45,12 +42,21 @@ button {
   color: #FCE22A;
   background-color: #D61355;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 h1 {
-  margin: 30px;
+  margin-top: 30px;
   text-align: center;
   font-size: 5rem;
+  color: #D61355;
+  text-shadow: #FCE22A -5px 5px;
+}
+
+h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2rem;
   color: #D61355;
   text-shadow: #FCE22A -5px 5px;
 }
