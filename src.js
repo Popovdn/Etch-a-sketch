@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector(".grid-container");
 const changeGridSizeButton = document.querySelector("#change-grid");
-const GRID_SIZE = 600;
+const GRID_SIZE = 450;
 
 function createGrid(size = 16) {
   let squareSize = GRID_SIZE / size;
@@ -33,7 +33,7 @@ function changeGridSize() {
 
   while (isNaN(newGridSize) || newGridSize > 100) {
     alert("Invalid size. Please make sure you are entering a number below 100");
-    newGridSize = Number(prompt("Enter your desired grid size."));
+    newGridSize = Number(prompt("Enter grid size - Maximum size 100"));
   }
 
   if (newGridSize) {

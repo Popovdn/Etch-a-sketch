@@ -1,6 +1,8 @@
 * {
+  background-color: #FFDD83;
   margin: 0;
   padding: 0;
+  font-family: Caveat, Roboto, sans-serif, system-ui;
 }
 
 *,
@@ -20,5 +22,35 @@
 }
 
 .hover {
-  background-color: gray;
+  background-color: #D61355;
+}
+
+.grid-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  padding: 5px 10px;
+  font-size: large;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #D61355;
+  color: #FCE22A;
+  background-color: #D61355;
+  font-weight: bold;
+}
+
+h1 {
+  margin: 30px;
+  text-align: center;
+  font-size: 5rem;
+  color: #D61355;
+  text-shadow: #FCE22A -5px 5px;
 }
