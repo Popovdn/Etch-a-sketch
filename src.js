@@ -2,9 +2,12 @@ const gridContainer = document.querySelector(".grid-container");
 const changeGridSizeButton = document.querySelector("#change-grid");
 const GRID_SIZE = 450;
 const toggleRgbButton = document.querySelector("#rgb");
+const coloringModeButton = document.querySelector("#coloring");
 const DEFAULT_GRID_COLOR = "#D61355";
 const DEFAULT_BUTTON_TEXT_COLOR = "#FCE22A";
 let rgbFlag = false;
+let coloringModeFlag = false;
+let opacityCounter = 0;
 
 function createGrid(size = 16) {
   let squareSize = GRID_SIZE / size;
@@ -15,16 +18,8 @@ function createGrid(size = 16) {
 
     for (let j = 0; j < size; j++) {
       let gridItem = document.createElement("div");
-      gridItem.addEventListener("mouseout", (e) => {
-        if (e.buttons === 1) {
-          if (!rgbFlag) {
-            e.target.style["background-color"] = DEFAULT_GRID_COLOR;
-          } else {
-            e.target.style["background-color"] = RGB();
-          }
-        }
-      });
       styleGridItem(gridItem, squareSize);
+      addGridFunctionality(gridItem);
       column.appendChild(gridItem);
     }
     gridContainer.appendChild(column);
@@ -63,6 +58,32 @@ function RGB() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
+function coloringMode() {
+  opacityCounter += 1;
+  if (opacityCounter >= 100) {
+    opacityCounter = 1;
+  }
+  return `${opacityCounter}%`;
+}
+
+function addGridFunctionality(gridItem) {
+  gridItem.addEventListener("mouseout", (e) => {
+    if (e.buttons === 1) {
+      if (!rgbFlag) {
+        e.target.style["background-color"] = DEFAULT_GRID_COLOR;
+      } else {
+        e.target.style["background-color"] = RGB();
+      }
+
+      if (coloringModeFlag) {
+        e.target.style.opacity = coloringMode();
+      } else {
+        e.target.style.opacity = 1;
+      }
+    }
+  });
+}
+
 toggleRgbButton.addEventListener("click", function (e) {
   if (rgbFlag) {
     rgbFlag = false;
@@ -70,9 +91,21 @@ toggleRgbButton.addEventListener("click", function (e) {
     e.target.style.color = DEFAULT_BUTTON_TEXT_COLOR;
     e.target.style["border-color"] = DEFAULT_GRID_COLOR;
   } else {
+    rgbFlag = true;
     e.target.style["background-color"] = RGB();
     e.target.style.color = RGB();
     e.target.style["border-color"] = RGB();
-    rgbFlag = true;
+  }
+});
+
+coloringModeButton.addEventListener("click", function (e) {
+  if (coloringModeFlag) {
+    coloringModeFlag = false;
+    e.target.style["background-color"] = DEFAULT_GRID_COLOR;
+    e.target.style.color = DEFAULT_BUTTON_TEXT_COLOR;
+  } else {
+    coloringModeFlag = true;
+    e.target.style["background-color"] = DEFAULT_BUTTON_TEXT_COLOR;
+    e.target.style.color = DEFAULT_GRID_COLOR;
   }
 });
