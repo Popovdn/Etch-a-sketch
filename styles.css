@@ -13,11 +13,7 @@
 
 .grid-container {
   display: flex;
-}
-
-.grid-item {
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid #D61355;
 }
 
 .grid-wrapper {
